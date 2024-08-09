@@ -82,6 +82,11 @@ class Variogram(object):
             Defaults to the Matheron estimator. Possible values are:
 
               * matheron        [Matheron, default]
+              * first_order_structure_function
+              * second_order_structure_function
+              * third_order_structure_function
+              * fourth_order_structure_function
+              * fifth_order_structure_function
               * cressie         [Cressie-Hawkins]
               * dowd            [Dowd-Estimator]
               * genton          [Genton]
@@ -948,6 +953,16 @@ class Variogram(object):
         if isinstance(estimator_name, str):
             if estimator_name.lower() == 'matheron':
                 self._estimator = estimators.matheron
+            elif estimator_name.lower() == 'first_order_structure_function':
+                self._estimator = estimators.first_order_structure_function
+            elif estimator_name.lower() == 'second_order_structure_function':
+                self._estimator = estimators.second_order_structure_function
+            elif estimator_name.lower() == 'third_order_structure_function':
+                self._estimator = estimators.third_order_structure_function
+            elif estimator_name.lower() == 'fourth_order_structure_function':
+                self._estimator = estimators.fourth_order_structure_function
+            elif estimator_name.lower() == 'fifth_order_structure_function':
+                self._estimator = estimators.fifth_order_structure_function
             elif estimator_name.lower() == 'cressie':
                 self._estimator = estimators.cressie
             elif estimator_name.lower() == 'dowd':

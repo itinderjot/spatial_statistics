@@ -67,6 +67,163 @@ def matheron(x):
 
 
 @njit
+def first_order_structure_function(x):
+    r"""first order structure function
+
+    Parameters
+    ----------
+    x : numpy.ndarray
+        Array of pairwise differences. These values should be the distances
+        between pairwise observations in value space. If xi and x[i+h] fall
+        into the h separating distance class, x should contain abs(xi - x[i+h])
+        as an element.
+
+    Returns
+    -------
+    numpy.float64
+
+    Notes
+    -----
+    .. math::
+        \gamma (h) = \frac{1}{N(h)} * \sum_{i=1}^{N(h)}(x)
+    with:
+    .. math::
+        x = Z(x_i) - Z(x_{i+h})
+    where x is exactly the input array x.
+    """
+    # prevent ZeroDivisionError
+    if x.size == 0:
+        return np.nan
+
+    return (1. / (x.size)) * np.sum(x)
+
+@njit
+def second_order_structure_function(x):
+    r"""second order structure function
+
+    Parameters
+    ----------
+    x : numpy.ndarray
+        Array of pairwise differences. These values should be the distances
+        between pairwise observations in value space. If xi and x[i+h] fall
+        into the h separating distance class, x should contain abs(xi - x[i+h])
+        as an element.
+
+    Returns
+    -------
+    numpy.float64
+
+    Notes
+    -----
+    .. math::
+        \gamma (h) = \frac{1}{N(h)} * \sum_{i=1}^{N(h)}(x)
+    with:
+    .. math::
+        x = Z(x_i) - Z(x_{i+h})
+    where x is exactly the input array x.
+    """
+    # prevent ZeroDivisionError
+    if x.size == 0:
+        return np.nan
+
+    return (1. / x.size) * np.sum(np.power(x, 2))
+
+
+@njit
+def third_order_structure_function(x):
+    r"""third order structure function
+
+    Parameters
+    ----------
+    x : numpy.ndarray
+        Array of pairwise differences. These values should be the distances
+        between pairwise observations in value space. If xi and x[i+h] fall
+        into the h separating distance class, x should contain abs(xi - x[i+h])
+        as an element.
+
+    Returns
+    -------
+    numpy.float64
+
+    Notes
+    -----
+    .. math::
+        \gamma (h) = \frac{1}{N(h)} * \sum_{i=1}^{N(h)}(x)
+    with:
+    .. math::
+        x = Z(x_i) - Z(x_{i+h})
+    where x is exactly the input array x.
+    """
+    # prevent ZeroDivisionError
+    if x.size == 0:
+        return np.nan
+
+    return (1. / x.size) * np.sum(np.power(x, 3))
+
+
+@njit
+def fourth_order_structure_function(x):
+    r"""fourth order structure function
+
+    Parameters
+    ----------
+    x : numpy.ndarray
+        Array of pairwise differences. These values should be the distances
+        between pairwise observations in value space. If xi and x[i+h] fall
+        into the h separating distance class, x should contain abs(xi - x[i+h])
+        as an element.
+
+    Returns
+    -------
+    numpy.float64
+
+    Notes
+    -----
+    .. math::
+        \gamma (h) = \frac{1}{N(h)} * \sum_{i=1}^{N(h)}(x)
+    with:
+    .. math::
+        x = Z(x_i) - Z(x_{i+h})
+    where x is exactly the input array x.
+    """
+    # prevent ZeroDivisionError
+    if x.size == 0:
+        return np.nan
+
+    return (1. / x.size) * np.sum(np.power(x, 4))
+
+@njit
+def fifth_order_structure_function(x):
+    r"""first order structure function
+
+    Parameters
+    ----------
+    x : numpy.ndarray
+        Array of pairwise differences. These values should be the distances
+        between pairwise observations in value space. If xi and x[i+h] fall
+        into the h separating distance class, x should contain abs(xi - x[i+h])
+        as an element.
+
+    Returns
+    -------
+    numpy.float64
+
+    Notes
+    -----
+    .. math::
+        \gamma (h) = \frac{1}{N(h)} * \sum_{i=1}^{N(h)}(x)
+    with:
+    .. math::
+        x = Z(x_i) - Z(x_{i+h})
+    where x is exactly the input array x.
+    """
+    # prevent ZeroDivisionError
+    if x.size == 0:
+        return np.nan
+
+    return (1. / x.size) * np.sum(np.power(x, 5))
+
+@njit
 def cressie(x):
     r""" Cressie-Hawkins Semi-Variance
 
